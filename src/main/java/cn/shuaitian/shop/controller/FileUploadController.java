@@ -23,7 +23,7 @@ import cn.shuaitian.shop.utils.SizeUtils;
 
 @Controller
 public class FileUploadController {
-	private static final String DEFAULT_PIC_DIR = "./images/";
+	private static final String DEFAULT_PIC_DIR = "images";
 
 	@Value(value = "#{prop.PICTURE_DIR}")
 	private String pictureDir;
@@ -85,7 +85,7 @@ public class FileUploadController {
 
 		User user = (User) session.getAttribute("user");
 		String fileName = System.currentTimeMillis() + "-" + user.getUsername() + "." + suffix;
-		File saveFile = new File(pictureDir + "/" + fileName);
+		File saveFile = new File(pictureDir + File.separator + fileName);
 		saveFile.createNewFile();
 		localFile.transferTo(saveFile);
 		resp.setStatus(200);

@@ -335,11 +335,11 @@ public class PageController {
 //			good.setContent(good.getContent().replaceAll("\"", "&quot;"));
 //		}
 		
+		
 		if (bindingResult.getErrorCount() > 0) {
 			StringBuilder sb = new StringBuilder();
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			for (FieldError error : errors) {
-				System.out.println(error.getDefaultMessage());
 				if (map.containsAttribute(error.getField() + "Error"))
 					continue;
 				sb.append(error.getDefaultMessage() + "; ");

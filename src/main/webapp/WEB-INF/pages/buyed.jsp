@@ -82,7 +82,7 @@
 					</tr>
 				</c:forEach>
 				<tr style="border-top:#111111 solid 1px;">
-					<td colspan="4" style="text-align: right">总价：${buyedTotalPrice }</td>
+					<td colspan="4" style="text-align: right">总价：<fmt:formatNumber type="number" value="${buyedTotalPrice/100 }" pattern="0.00" maxFractionDigits="2"/></td>
 				</tr>
 			</table>
 		</div>

@@ -4,9 +4,15 @@ var arr_remove = new Array();//被删除的图片的集合
 var picurl_all = new Array();//所有被添加过的图片的集合
 var max_img_count = 3;//最多可以上传的图片的数量
 
-function formsubmit() {
+function processContent(){
 	var content = editor2.txt.html();
+	if(content == '<p><br></p>')
+		content = '';
 	$("#content").val(content);
+}
+
+function formsubmit() {
+	processContent();
 	$("form[name=fileForm]").submit();
 }
 
@@ -27,10 +33,10 @@ function getimg() {
 		return ;
 	var content = 	'<div class="col-sm-1" id="img_'+img_count+'">'
 	+		'<div class="row">'
-	+		 	'<img src="'+src+'" width="50px" height="50px" style="padding-left: 15px">'
+	+		 	'<img src="'+src+'" width="70px" height="50px" style="padding-left:15px;">'
 	+		'</div>'
 	+		'<div class="row">'
-	+			'<a style="padding-left: 15px" onclick="deleteImg('+img_count+')">删除</a>'
+	+			'<a style="padding-left:20px; cursor:pointer;" onclick="deleteImg('+img_count+')">删除</a>'
 	+		'</div>'
 	+	'</div>';
 	
@@ -56,7 +62,7 @@ function uploadpic() {
 	}
 	var form = $("form[name=fileForm]");
 	var options = {
-		url : '/uploadpic.do', // 上传文件的路径
+		url : 'uploadpic.do', // 上传文件的路径
 		type : 'post',
 		success : function(data) {
 			console.log(data);
@@ -72,10 +78,10 @@ function uploadpic() {
 				var src = data.picURL;
 				var content = 	'<div class="col-sm-1" id="img_'+img_count+'">'
 							+		'<div class="row">'
-							+		 	'<img src="'+src+'" width="50px" height="50px" style="padding-left: 15px">'
+							+		 	'<img src="'+src+'" width="70px" height="50px" style="padding-left:15px;">'
 							+		'</div>'
 							+		'<div class="row">'
-							+			'<a style="padding-left: 15px" onclick="deleteImg('+img_count+')">删除</a>'
+							+			'<a style="padding-left:20px; cursor:pointer;" onclick="deleteImg('+img_count+')">删除</a>'
 							+		'</div>'
 							+	'</div>';
 				var old = $("#picsmall").html();
@@ -188,8 +194,7 @@ function numsub() {
 }
 
 function submitupdate() {
-	var content = editor2.txt.html();
-	$("#content").val(content);
+	processContent();
 	var form = $("form[name=fileForm]");
 
 	var options = {

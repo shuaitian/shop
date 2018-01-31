@@ -118,9 +118,7 @@
 		 <h1><small>商品详情</small></h1>
 	</div>
 	<div>
-	<center>
 	${good.content }
-	</center>
 	</div>
 </div>
 <div class="col-md-1"></div>
